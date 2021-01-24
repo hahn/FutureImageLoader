@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.example.futureimageloader.databinding.ActivityMainBinding
+import com.example.futureimageloader.util.loadImageFromUrl
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,14 +26,8 @@ class MainActivity : AppCompatActivity() {
       } else {
         binding.edUrl.text.toString()
       }
-      loadImage(url)
+      binding.imageView.loadImageFromUrl(url)
     }
 
-  }
-
-  private fun loadImage(url: String) {
-    Glide.with(this)
-        .load(url)
-        .into(binding.imageView)
   }
 }
