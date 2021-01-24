@@ -1,9 +1,11 @@
 package com.example.futureimageloader.feature.main
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.example.futureimageloader.databinding.ActivityMainBinding
+import com.example.futureimageloader.feature.movielist.MovieListActivity
 import com.example.futureimageloader.util.loadImageFromUrl
 
 class MainActivity : AppCompatActivity() {
@@ -27,6 +29,10 @@ class MainActivity : AppCompatActivity() {
         binding.edUrl.text.toString()
       }
       binding.imageView.loadImageFromUrl(url)
+    }
+
+    binding.btMovie.setOnClickListener {
+      startActivity(Intent(this, MovieListActivity::class.java))
     }
 
   }

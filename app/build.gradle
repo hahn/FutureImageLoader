@@ -8,7 +8,12 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
-
+    Properties properties = new Properties()
+    def propertiesFile = project.rootProject.file('local.properties')
+    if (propertiesFile.exists()) {
+        properties.load(propertiesFile.newDataInputStream())
+    }
+    def apiKey = properties.getProperty('tmdbAccessKey')
 
     defaultConfig {
         applicationId "com.example.futureimageloader"
@@ -16,6 +21,9 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        buildConfigField('String', 'API_KEY', '"' + apiKey + '"')
+        buildConfigField('String', 'BASE_URL', '"https://api.themoviedb.org/3/"')
+        buildConfigField('String', 'BASE_IMAGE_URL', '"https://image.tmdb.org/t/p/w500/"')
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
